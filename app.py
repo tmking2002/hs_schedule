@@ -5,7 +5,7 @@ schedule = pd.read_csv('schedule.csv')
 
 schedule = schedule[schedule['Date'] != 'Date TBA']
 
-schedule["Opponent"] = schedule["Opponent"].str.replace("@", "").str.replace("vs", "").str.replace("*", "").str.strip()
+schedule["Opponent"] = schedule["Opponent"].str.replace("@", "@ ").str.replace("vs", "vs. ").str.replace("*", "").str.strip()
 schedule["Date"] = pd.to_datetime(schedule["Date"] + "/2024", format='%m/%d/%Y').dt.date
 
 st.title('Georgia HS Fall 2024 Schedule')
