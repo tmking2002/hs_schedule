@@ -8,16 +8,21 @@ schedule = schedule[schedule['Date'] != 'Date TBA']
 schedule["Opponent"] = schedule["Opponent"].str.replace("@", "").str.replace("vs", "").str.replace("*", "").str.strip()
 schedule["Date"] = pd.to_datetime(schedule["Date"] + "/2024", format='%m/%d/%Y').dt.date
 
-st.title('2024 Fall Schedule')
-st.subheader('Georgia HS')
+st.title('Georgia HS Fall 2024 Schedule')
 
 default_teams = ['Riverwood Raiders', 'Brookwood Broncos', 'Pierce County Bears', 'Mount Paran Christian Eagles', 
                  'Buford Wolves', 'East Coweta Indians', 'Cherokee Bluff Bears', 'East Forsyth Broncos', 
                  'West Forsyth Wolverines', 'Northside Eagles']
 
-all_teams = schedule['Team'].unique().sort()
+all_teams = sorted(schedule['Team'].unique())
 
 teams = st.multiselect('Select Teams', all_teams, default=default_teams)
+
+select_all = st.checkbox('Select All Teams', value=False)
+
+if select_all:
+    teams = all_teams
+
 
 filtered_schedule = schedule[schedule['Team'].isin(teams)]
 
