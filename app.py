@@ -10,15 +10,21 @@ schedule["Date"] = pd.to_datetime(schedule["Date"] + "/2024", format='%m/%d/%Y')
 
 st.title('Georgia HS Fall 2024 Schedule')
 
+select_all = st.checkbox('Select All Teams', value=False)
+select_all_default = st.checkbox('Select All Default Teams', value=False)
+
 default_teams = ['Riverwood Raiders', 'Brookwood Broncos', 'Pierce County Bears', 'Mount Paran Christian Eagles', 
                  'Buford Wolves', 'East Coweta Indians', 'Cherokee Bluff Bears', 'East Forsyth Broncos', 
                  'West Forsyth Wolverines', 'Northside Eagles']
 
 all_teams = sorted(schedule['Team'].unique())
 
-teams = st.multiselect('Select Teams', all_teams, default=default_teams)
+if select_all_default:
+    teams = st.multiselect('Select Teams', all_teams, default=default_teams)
+else:
+    teams = st.multiselect('Select Teams', all_teams)
 
-select_all = st.checkbox('Select All Teams', value=False)
+
 
 if select_all:
     teams = all_teams
