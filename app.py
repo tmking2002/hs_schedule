@@ -15,7 +15,7 @@ select_all_default = st.checkbox('Select All Default Teams', value=False)
 
 default_teams = ['Riverwood Raiders', 'Brookwood Broncos', 'Pierce County Bears', 'Mount Paran Christian Eagles', 
                  'Buford Wolves', 'East Coweta Indians', 'Cherokee Bluff Bears', 'East Forsyth Broncos', 
-                 'West Forsyth Wolverines', 'Northside Eagles']
+                 'West Forsyth Wolverines', 'Northside Eagles', 'Peach County Trojans']
 
 all_teams = sorted(schedule['Team'].unique())
 
