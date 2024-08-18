@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import datetime
 
 schedule = pd.read_csv('schedule.csv')
 
@@ -32,7 +33,7 @@ if select_all:
 
 filtered_schedule = schedule[schedule['Team'].isin(teams)]
 
-start_date = st.date_input('Start Date', pd.to_datetime('2024-08-01'))
+start_date = st.date_input('Start Date', pd.to_datetime(datetime.datetime.now().date()))
 end_date = st.date_input('End Date', pd.to_datetime('2024-12-31'))
 
 filtered_schedule = filtered_schedule[(filtered_schedule['Date'] >= start_date) & (filtered_schedule['Date'] <= end_date)]
